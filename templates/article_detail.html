@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+  <h2>{{ object.name }}</h2>
+        <p>{{ object.description|safe }}</p>
+        <div>Tác giả: {{ object.educator }} </div>
+        <p class="mt-4"><a href="{% url 'home' %}" class="btn btn-success">Trở về</a></p>
+    </div>
+
+{% endblock %}
+

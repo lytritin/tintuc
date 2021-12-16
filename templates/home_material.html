@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <div class="container mt-4">
+    <h5 >DANH SÁCH THIẾT BỊ</h5>
+    </div>
+    <table class=" container table ">
+
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Số Thứ Tự</th>
+            <th scope="col">Phiếu Nhập</th>
+            <th scope="col">Số Hóa Đơn</th>
+            <th scope="col">Ngày Nhập</th>
+            <th scope="col">Thiết Bị</th>
+            <th scope="col">Ghi Chú</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in object_list %}
+            <tr>
+                <th scope="row">{{ item.id }}</th>
+                <td>{{ item.phieunhap }}</td>
+                <td>{{ item.sohoadon }}</td>
+                <td>{{ item.ngaythang }}</td>
+                <td>{{ item.tenvattu }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

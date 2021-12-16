@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+<title>{% block title %}Dang Nhap VNEGG{% endblock %}</title>
+{% block content %}
+    <div class="container">
+    <div class="card mt-4">
+        <div class="card-body">
+            </div>
+        <form method="post">
+            {% csrf_token %}
+           {{ form.as_p }}
+            <input type="hidden" name="next" value="/">
+            <button type="submit" class="btn btn-primary">Dang Nhap</button>
+        </form>
+    </div>
+        </div>
+
+
+{% endblock %}

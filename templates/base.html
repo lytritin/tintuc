@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Trang Tin Tức Nội Bộ {% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">AJ TOTAL News</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% if nav == 'home' %}active{% endif %}">
+                <a class="nav-link" href="/">Trang Chủ <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tin Tức</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Hỏi Đáp</a>
+            </li>
+            <li class="nav-item {% if nav == 'about' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'about' %}">Giới Thiệu</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{% url 'home' %}" id="navbarDropdown" role="button"
+                   data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'home' %}">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="{% url 'material' %}">Material</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="Search" placeholder="Nhập từ khóa" aria-label="go tu khoa">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>
+        </form>
+        {% if not user.is_authenticated %}
+            <ul class="navbar-nav mr-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Đăng Nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Đăng ký</a>
+                </li>
+            </ul>
+        {% else %}
+            <ul class="navbar-nav mr-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Hồ sơ</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Đăng xuất</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="{% url 'material' %}">Material</a>
+                </li>
+            </ul>
+        {% endif %}
+    </div>
+</nav>
+{% block content %}{% endblock %}
+
+</body>
+</html>

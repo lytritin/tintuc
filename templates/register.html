@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+<title>{% block title %}Đăng Ký Tài Khoản{% endblock %}</title>
+{% block content %}
+    <div class="container">
+        <div class="card mt-4">
+            <div class="card-body">
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Đăng Ký Tài Khoản</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
