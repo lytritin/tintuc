@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
-import os
+import django_heroku
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-*lg=$#kmqp4s*00@(0oyg8apl&1y)+4bbm90e-xx5=cj1m@vj4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['ajnews.herokuapp.com']
 
 
 # Application definition
@@ -97,13 +97,23 @@ WSGI_APPLICATION = 'vnegg_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'vnegg_db',
+#         'USER':'postgres',
+#         'PASSWORD':'123456',
+#         'HOST':'127.0.0.1',
+#         'PORT':'5432',
+# }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'vnegg_db',
-        'USER':'postgres',
-        'PASSWORD':'123456',
-        'HOST':'127.0.0.1',
+        'NAME':'d429fjd98cvcrj',
+        'USER':'yschtsqhlavrwg',
+        'PASSWORD':'5b17421252a00e40074fe8b672ff0d82e7e1f42c6249752531f890d987d2c268',
+        'HOST':'ec2-52-201-106-191.compute-1.amazonaws.com',
         'PORT':'5432',
 }
 }
@@ -150,6 +160,7 @@ AUTH_USER_MODEL = 'profiles.User'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
+django_heroku.settings(locals())
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
